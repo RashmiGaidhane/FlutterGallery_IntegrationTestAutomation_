@@ -1,126 +1,112 @@
-# Flutter Gallery
+## ## ## ## Gallery application test automation ## ## ## ## ##
 
-Flutter Gallery is a resource to help developers evaluate and use Flutter.
-It is a collection of Material Design & Cupertino widgets, behaviors, and vignettes
-implemented with Flutter. We often get asked how one can see Flutter in action,
-and this gallery demonstrates what Flutter provides and how it behaves in the
-wild.
+## Getting Started
+Demonstrate automation testing of "Flutter Gallery" application in Android with Flutter driver!!
+The Goal is to write automated test cases on real devices of "Flutter_Gallary" application. The Source code & binaries are available at " https://github.com/flutter/gallery "
 
-![Flutter Gallery](https://user-images.githubusercontent.com/6655696/73928238-0d7fcc80-48d3-11ea-8a7e-ea7dc5d6e713.png)
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Requirements
+Automate the below
+"user is adding some items to the shopping cart" scenario.
+For example:
+1. Opening the Shrine Gallery
+2. Adding the Walter henley (white) shirt to cart after going to the Clothing filter
+3. Adding the Shrug bag after using the Accessories filter
+4. Checking the total of the shopping cart
+5. Clearing the shopping cart
 
-## Running Flutter Gallery on Flutter's master channel
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Tools / Technologies
+1. Android Studio
+2. Flutter SDK
+3. Android SDK
+4. adb
+5. Dart
+6. Debugger tool - Dev Tool/Flutter Inspector
 
-The Flutter Gallery targets Flutter's master channel. As such, it can take advantage
-of new SDK features that haven't landed in the stable channel.
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Setup
+1. Download Android SDK and setup as per given steps
+2. Download the Flutter SDK and put at desired folder like :C:/Flutter_SDK/
+3. Set all the paths in Environment variables
+4. Add all necessary plugins
+5. adb to connect Android devices
+6. Setup DevTool
+7. Clone the Flutter Gallery project at desired location
+8. Setup project in Android Studio and resolve all dependencies
+7. Add below code snippet in pubspec.yaml file
+         dev_dependencies:
+         flutter_driver:
+         sdk: flutter
+         test: any
+8. Resolve all dependencies from pubspec.yaml
+9. Run the main.dart class from lib, to get the code compiled and clean
+10. Add "enableFlutterDriverExtension();" in main() of shoppingcartFeature.dart, to enable the flutter extension Also import the import 'package:flutter_driver/driver_extension.dart';
 
-If you'd like to run the Flutter Gallery, make sure to switch to the master channel
-first:
+Reference URL: https://flutter.dev/docs/get-started/install
 
-```bash
-flutter channel master
-flutter upgrade
-```
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Structure
+1. Used Page Object Model design pattern to automated the integration test of Flutter Gallery app.
+2. Under test_driver folder, complete test automation structure follows
+    test_driver
+        - commonutils
+            - basttest.dart
+            - isolates_workaround.dart
+        - screens
+            - home_scree.dart
+            - login_screen.dart
+            - topmenubar_section.dart
+            - menuoptions_screen.dart
+            - productlist_screen.dart
+            - shoppingcart_screen.dart
+            - bottommenubar_section.dart
+         - testscripts
+            - regressiontestsuite
+                - Feature
+                    - shoppingcartFeature.dart
+                    - shoppingcartFeature_test.dart
+                    - loginFeature.dart
+            - sanitytestsuite
+         - reporting/screenshots
 
-When you're done, use this command to return to the safety of the stable
-channel:
+   - basttest.dart : this file contains all common pre-requisites to run the test activities like - Flutter driver initialization & connection, setUpAll, teardown, health of flutter driver, launch of application.
+   - isolates_workaround.dart : this file contains the fix for abnormal behaviour of application. Workaround for bug: https://github.com/flutter/flutter/issues/24703
+   - home_scree.dart (all files...) : these files provided locators/elements and their methods. It is best practice to maintain the code.
+   - shoppingcartFeature.dart : this is use to have instrument the app. Build & install the debug build in targeted attached device.
+   - shoppingcartFeature_test.dart : This is test script file which contain execution steps of test scenario.
 
-```bash
-flutter channel stable
-flutter upgrade
-```
+Picture -
+   ![PageObjectModel](img/PageObjectModel.png)
 
-## Supported Platforms
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Execution
+1. Connect computer to a real Android device
+2. Check the connection by using adb devices on cmd
+3. Run the following command from the root of the project - <flutter drive --target=test_driver/testscripts/regressiontestsuite/Features/shoppingcartFeature.dart>
+4. Step 3 will install the debug.apk/build in the attached device and then test start execution.
+4. Execution happens and logs get generated in Console.
 
-Flutter Gallery has been built to support multiple platforms.
-This includes:
+Reference URL: https://flutter.dev/docs/cookbook/testing/integration/introduction
 
-- Android
-- iOS
-- web
-- macOS
-- Linux
-- Windows
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Reporting
+Currently we can see execution in the console window. Used the print command to print the logs. Need to explore how to do reporting for this Integration Test
 
-An APK, macOS, Linux, and Windows builds are available for [download](https://github.com/flutter/gallery/releases). You can find it on the web at [gallery.flutter.dev](https://gallery.flutter.dev/) and on the [Google Play Store](https://play.google.com/store/apps/details?id=io.flutter.demo.gallery).
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Point to be taken
+1. Updated some Keys/text locator to access elements of the screens and perform the certain actions
+2. More features of Flutter are in the exploration phase.
 
-You can build from source yourself for any of these platforms, though, please note desktop support must [be enabled](
-https://github.com/flutter/flutter/wiki/Desktop-shells#tooling). For
-example, to run the app on Windows:
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Challenges
+1. The given applications/ binaries do not have Key values, which is used to find the objects on the screen.
+2. Used Appium for automating the test using UI automator, but blocked to get Clothing items on Product list screen, as Widget is not exposing the proper elements.
+[Solution]: Locators/elements should get exposed by the developer team.
+3. Used Appium Flutter Driver using java/maven project, but import pro.truongsinh.appium_flutter.FlutterFinder; import pro.truongsinh.appium_flutter.finder.FlutterElement; are not working as expected and hence blocked after lunching pplication, nothing happened.
+4. Application is not launching properly, working around used as have "isolates_workaround.dart" file
+5. More enhancements we can do will require more time.
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Video of test execution
 
-```bash
-cd gallery/
-flutter config --enable-windows-desktop
-flutter create .
-flutter run -d windows
-```
-
-Additionally, the UI adapts between mobile and desktop layouts regardless of the
-platform it runs on. This is determined based on window size as outlined in
-[adaptive.dart](lib/layout/adaptive.dart).
-
-## To include a new splash animation
-
-1. Convert your animation to a `.gif` file.
-   Ideally, use a background color of `0xFF030303` to ensure the animation
-   blends into the background of the app.
-
-2. Add your new `.gif` file to the assets directory under
-   `assets/splash_effects`. Ensure the name follows the format
-   `splash_effect_$num.gif`. The number should be the next number after the
-   current largest number in the repository.
-
-3. Update the map `_effectDurations` in
-   [splash.dart](lib/pages/splash.dart) to include the number of the
-   new `.gif` as well as its estimated duration. The duration is used to
-   determine how long to display the splash animation at launch.
-
-## Generating localized strings and highlighted code segments
-
-To generate localized strings or highlighted code segments, make sure that you
-have [grinder](https://pub.dev/packages/grinder) installed by running 
-```bash
-flutter pub get
-```
-
-To generate localized strings (see separate [README](lib/l10n/README.md)
-for more details):
-
-```bash
-flutter pub run grinder l10n
-```
-
-To generate code segments (see separate [README](tool/codeviewer_cli/README.md) for
-more details):
-```bash
-flutter pub run grinder update-code-segments
-```
-
-## Creating a new release (for Flutter org members)
-
-1. Bump the version number up in the `pubspec.yaml`. Use semantic versioning to determine
-   which number to increment. For example `2.2.0+020200` should become `2.3.0+020300`.
-
-2. Publish the firebase hosted web release.
-    * Log in to the account that has write access to `gallery-flutter-dev` with `firebase login`
-    * `flutter build web`
-    * `firebase deploy -P prod` to deploy to production (equivalent to `firebase deploy`).
-    * `firebase deploy -P staging` to deploy to staging. Check with the team to see if the staging
-       instance is currently used for a special purpose.
-
-3. Publish the Android release
-    * Ensure you have the correct signing certificates.
-    * Create the app bundle with `flutter build appbundle`.
-    * Upload to the Play store console.
-    * Publish the Play store release.
-    * Create the APK with `flutter build apk` (this is for the Github release).
-
-4. Draft a release in Github, calling the release `Flutter Gallery 2.x`
-    * The tag should be `v2.x` and the target `master`.
-    * Upload the Android APK from above.
-    * Create and upload the macOS build by running `flutter build macos` and zipping the 
-      app inside `build/macos/Build/Products/Release`.
-    * On a Linux machine, create and upload the Linux build by running `flutter build linux`
-      and compress the contents of `build/linux/release/bundle`.
-    * On a Windows machine, create and upload the Windows build by running `flutter build windows`
-       and zipping the contents of `build/windows/release`.
-    * Publish the release.
+![Flutter Gallery_Test_Automation](video/PageObjectModel.gif)
