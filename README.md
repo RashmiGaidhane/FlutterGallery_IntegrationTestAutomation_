@@ -89,7 +89,7 @@ PageObjectModel ![PageObjectModel](img/PageObjectModel.png)
 | 20    | Validate the 'TOTAL' value on cart screen                                  | TOTAL amount should be displayed                                                                                           | pass          |
 | 21    | Tap on 'CLEAR CART'  button to clear cart                                  | User should be navigated on previous screen, product-list screen                                                           | pass          |
 | 22    | Validate the SHRINE title text at the top of the screen                    | SHRINE title text at the top of the screen on product-list screen should be visible to user                                | pass          |
-| 23    | Validate shopping cart is empty                                            | User should not see any items added in shopping cart<br>1\. 'No ITEMS' text<br>2\. $0.00 total<br>3\. No product available | pass          |
+| 23    | Validate shopping cart is empty                                            | User should not see any items added in shopping cart<br>1\. 'No ITEMS' text<br>2\. $0.00 total<br> | pass          |
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Execution
@@ -111,7 +111,7 @@ Currently we can see execution in the console window. Used the print command to 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Challenges
-1. Appium driver automation will not work as the given applications/ binaries do not have Key values/identifire, which are used to identify the objects on the screen. In this Flutter Gallery application we are blocked on Product screen due to not getting identifiers. Widget is not exposing the proper locators. As result we are blocked to automated the next steps.
+1. Appium driver automation will not work as the given applications/ binaries do not have Key values/identifire, which are used to identify the objects on the screen. In this Flutter Gallery application we are blocked on Product screen due to not getting identifiers. Widget is not exposing the proper locators. As result we are blocked to automated the next steps. If elements/locator gets exposed to us then we can also automate this application using Appium.
 2. Appium Flutter Driver is not recognizing Key values by FlutterElement/FlutterFinder using Java and hence as result we are blocked to automated the application scenarios.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
