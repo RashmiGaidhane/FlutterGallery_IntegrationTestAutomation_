@@ -2,7 +2,9 @@
 
 ## Getting Started
 Demonstrate automation testing of "Flutter Gallery" application in Android with Flutter driver!!
-The Goal is to write automated test cases on real devices of "Flutter_Gallary" application. The Source code & binaries are available at " https://github.com/flutter/gallery "
+The Goal is to write automated test cases on real devices of "Flutter_Gallary" application. 
+
+The Source code & binaries are available at " https://github.com/flutter/gallery "
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Requirements
@@ -17,6 +19,7 @@ For example:
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Tools / Technologies
+To overcome the below mentioned challenges in Challenges section, used the below technology stack. 
 1. Android Studio
 2. Flutter SDK
 3. Android SDK
@@ -48,36 +51,44 @@ Reference URL: https://flutter.dev/docs/get-started/install
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Structure
 1. Used Page Object Model design pattern to automated the integration test of Flutter Gallery app.
-2. Under test_driver folder, complete test automation structure follows
-    test_driver
-        - commonutils
-            - basttest.dart
-            - isolates_workaround.dart
-        - screens
-            - home_scree.dart
-            - login_screen.dart
-            - topmenubar_section.dart
-            - menuoptions_screen.dart
-            - productlist_screen.dart
-            - shoppingcart_screen.dart
-            - bottommenubar_section.dart
-         - testscripts
-            - regressiontestsuite
-                - Feature
-                    - shoppingcartFeature.dart
-                    - shoppingcartFeature_test.dart
-                    - loginFeature.dart
-            - sanitytestsuite
-         - reporting/screenshots
+2. Under test_driver folder, complete test automation structure and test script are as follows
+   Project_Test_Structure ![Project_Test_Structure](img/Project_Test_Structure.png)
 
-   - basttest.dart : this file contains all common pre-requisites to run the test activities like - Flutter driver initialization & connection, setUpAll, teardown, health of flutter driver, launch of application.
+   - basttest.dart : this file contains all common pre-requisites to run the test activities like - Flutter driver initialization & connection, setUpAll, teardown, health of          flutter driver, launch of application.
    - isolates_workaround.dart : this file contains the fix for abnormal behaviour of application. Workaround for bug: https://github.com/flutter/flutter/issues/24703
    - home_scree.dart (all files...) : these files provided locators/elements and their methods. It is best practice to maintain the code.
    - shoppingcartFeature.dart : this is use to have instrument the app. Build & install the debug build in targeted attached device.
    - shoppingcartFeature_test.dart : This is test script file which contain execution steps of test scenario.
 
-Picture -
-   ![PageObjectModel](img/PageObjectModel.png)
+PageObjectModel ![PageObjectModel](img/PageObjectModel.png)
+
+3. Test Cases with scenrioes & steps:
+
+| Sr.no | Scenarios                                                                  | Expected Result                                                                                                            | Actual Result |
+| ----- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| 1     | Launch application by tapping on 'Flutter Gallery' icon on targeted device | Application should be launched successfully & user should be navigated on Gallery home screen                              | pass          |
+| 2     | Validate the 'Gallery' heading on home screen                              | Gallery heading on home screen should be visible to user                                                                   | pass          |
+| 3     | Tap on Shrine Card image on home screen                                    | User should be navigated to login screen                                                                                   | pass          |
+| 4     | Validate the 'Next' button on login screen                                 | Next button on login screen should be visible to user                                                                      | pass          |
+| 5     | Enter 'abc' in Username text box                                           | abc' should be entered in the Username text box                                                                            |               |
+| 6     | Enter 'abc' in Password text box                                           | abc' should be entered in the Password text box                                                                            |               |
+| 7     | Tap on 'Next' button on login screen                                       | User should be navigated to product-list screen                                                                            | pass          |
+| 8     | Validate the 'SHRINE' title text at the top of the screen                  | SHRINE title text at the top of the screen on product-list screen should be visible to user                                | pass          |
+| 9     | Tap on hamburger icon from the top menu bar                                | Menu option screen should be  displayed                                                                                    | pass          |
+| 10    | Validate the CLOTHING option                                               | CLOTHING option should be visible to user                                                                                  | pass          |
+| 11    | Tap on  CLOTHING option                                                    | User should be navigated to  product-list screen of clothing category                                                      | pass          |
+| 12    | Scroll until to get the clothing item 'Walter henley (white)'              | Screen should be scrolled until get the product 'Walter henley (white)' and should be stopped once get the product         | pass          |
+| 13    | Tap on clothing product 'Walter henley (white)'                            | The clothing product should be added in shopping cart                                                                      | pass          |
+| 14    | Tap on hamburger icon from the top menu bar                                | Menu option screen should be  displayed                                                                                    | pass          |
+| 15    | Validate the ACCESSORIES option                                            | ACCESSORIES option should be visible to user                                                                               | pass          |
+| 16    | Tap on  ACCESSORIES option                                                 | User should be navigated to  product-list screen of accessories category                                                   | pass          |
+| 17    | Scroll until to get the clothing item 'Shrug bag'                          | Screen should be scrolled until get the product 'Shrug bag' and should be stopped once found the product                   | pass          |
+| 18    | Tap on Shopping Cart icon at the bottom of the product-list screen         | User should be navigated on cart screen                                                                                    | pass          |
+| 19    | Validate the button 'CLEAR CART'                                           | CLEAR CART'  button should be visible to user                                                                              | pass          |
+| 20    | Validate the 'TOTAL' value on cart screen                                  | TOTAL amount should be displayed                                                                                           | pass          |
+| 21    | Tap on 'CLEAR CART'  button to clear cart                                  | User should be navigated on previous screen, product-list screen                                                           | pass          |
+| 22    | Validate the SHRINE title text at the top of the screen                    | SHRINE title text at the top of the screen on product-list screen should be visible to user                                | pass          |
+| 23    | Validate shopping cart is empty                                            | User should not see any items added in shopping cart<br>1\. 'No ITEMS' text<br>2\. $0.00 total<br>3\. No product available | pass          |
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Execution
@@ -94,18 +105,14 @@ Reference URL: https://flutter.dev/docs/cookbook/testing/integration/introductio
 Currently we can see execution in the console window. Used the print command to print the logs. Need to explore how to do reporting for this Integration Test
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-## Point to be taken
+## Point to be noted
 1. Updated some Keys/text locator to access elements of the screens and perform the certain actions
-2. More features of Flutter are in the exploration phase.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Challenges
-1. The given applications/ binaries do not have Key values, which is used to find the objects on the screen.
-2. Used Appium for automating the test using UI automator, but blocked to get Clothing items on Product list screen, as Widget is not exposing the proper elements.
-[Solution]: Locators/elements should get exposed by the developer team.
-3. Used Appium Flutter Driver using java/maven project, but import pro.truongsinh.appium_flutter.FlutterFinder; import pro.truongsinh.appium_flutter.finder.FlutterElement; are not working as expected and hence blocked after lunching pplication, nothing happened.
-4. Application is not launching properly, working around used as have "isolates_workaround.dart" file
-5. More enhancements we can do will require more time.
+1. Appium driver automation will not work as the given applications/ binaries do not have Key values/identifire, which are used to identify the objects on the screen. In this Flutter Gallery application we are blocked on Product screen due to not getting identifiers. Widget is not exposing the proper locators. As result we are blocked to automated the next steps.
+2. Appium Flutter Driver is not recognizing Key values by FlutterElement/FlutterFinder using Java and hence as result we are blocked to automated the application scenarios.
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Video of test execution
 
