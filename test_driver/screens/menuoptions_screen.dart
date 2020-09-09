@@ -18,31 +18,31 @@ class MenuOptionsScreen {
   }
 
   Future<void> isClothingTxtAvailable() async {
-    print('Validate Clothing text is available on Menu Options screen...');
+    print('Validate the CLOTHING option is available on menu options screen...');
     expect(await _driver.getText(mnuOptionClothing), isNotEmpty);
     expect(await _driver.getText(mnuOptionClothing), 'CLOTHING');
   }
 
   Future<void> tapClothingOptionTxt() async {
     //Return text of Next button
-    print('Tap on CLOTHING Menu option text...');
+    print('Tap on CLOTHING menu option text...');
     return await _driver.tap(mnuOptionClothing);
   }
 
   Future<void> waitForAccessoriesOptionTxt() async {
-    print('Wait to load Shrine Menu options screen...');
+    print('Wait to load Shrine menu options screen...');
     return _driver.waitFor(mnuOptionAccessories);
   }
 
   Future<void> isAccessoriesTxtAvailable() async {
-    print('Validate accessories text is available on Menu Options screen...');
+    print('Validate accessories text is available on menu options screen...');
     expect(await _driver.getText(mnuOptionAccessories), isNotEmpty);
     expect(await _driver.getText(mnuOptionAccessories), 'ACCESSORIES');
   }
 
   Future<void> tapAccessoriesOptionTxt() async {
     //Return text of Next button
-    print('Tap on ACCESSORIES Menu option text...');
+    print('Tap on ACCESSORIES menu option text...');
     return await _driver.tap(mnuOptionAccessories);
   }
 }

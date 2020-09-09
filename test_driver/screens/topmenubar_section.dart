@@ -15,7 +15,7 @@ class TopMenuBarScreen {
 
   Future<void> tapMenuBarBtn() async {
     //Return text of Next button
-    print('Tap on Menu bar button...');
+    print('Tap on hamburger icon from the top menu bar...');
     return await _driver.tap(mnuMenuBar);
   }
 
@@ -25,7 +25,7 @@ class TopMenuBarScreen {
   }
 
   Future<void> isShrineTxtAvailable() async {
-    print('Validate SHRINE title text on Menu top bar...');
+    print('Validate SHRINE title text on menu top bar...');
     expect(await _driver.getText(txtShrine), isNotEmpty);
     expect(await _driver.getText(txtShrine), 'SHRINE');
   }

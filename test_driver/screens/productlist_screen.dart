@@ -17,12 +17,12 @@ class ProductListScreen {
   }
 
   Future<void> tapProductClothingItem() async {
-    print('Tap on clothing prodcuct item on product list screen...');
+    print('Tap on clothing prodcuct item [Walter henley (white)] on product list screen...');
     return await _driver.tap(txtClothingProduct);
   }
 
   Future<void> tapProductAccessoriesItem() async {
-    print('Tap on accessories prodcuct item on product list screen...');
+    print('Tap on accessories prodcuct item [Shrug bag] on product list screen...');
     return await _driver.tap(txtAccessoriesProduct);
   }
 

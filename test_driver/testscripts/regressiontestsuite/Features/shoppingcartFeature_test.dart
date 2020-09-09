@@ -27,14 +27,21 @@ Future<void> main() {
       var menuOptionsScreen = MenuOptionsScreen(driver);
       var shoppingCartScreen = ShoppingCartScreen(driver);
 
-      //Validate user is on home screen of the application
+
+      //Verify user should get the Shrine Card on home screen
       await homeScreen.verifyShrineCard();
+      //Validate user is on home screen of the application
+      await homeScreen.isGalleryTxtDisplayed();
       //Opening the Shrine Gallery by tapping on it.
       await homeScreen.tapShrineCard();
       //Wait to load Shrine Login screen
       await loginScreen.waitForNextButton();
       //Validate Next button on Shrine login screen
       await loginScreen.isNextBtnAvailable();
+      //Enter Username
+      await loginScreen.enterUsernameTxt();
+      //Enter Password
+      await loginScreen.enterPasswordTxt();
       //Tap on NEXT button
       await loginScreen.tapNextBtn();
       //Wait to load the product list screen
@@ -105,6 +112,10 @@ Future<void> main() {
       await productListScreen.waitForProductList();
       //Validate user is on Accessories Product screen.
       await topMenuBarScreen.isShrineTxtAvailable();
+      //Tap on shopping cart icon
+      await bottomMenuBarScreen.tapShoppingCard();
+      //Validate cart is empty
+      await shoppingCartScreen.verifyShoppingCartIsEmpty();
     });
   });
 }
