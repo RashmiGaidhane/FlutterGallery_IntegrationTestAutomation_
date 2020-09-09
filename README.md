@@ -52,7 +52,8 @@ Reference URL: https://flutter.dev/docs/get-started/install
 ## Structure
 1. Used Page Object Model design pattern to automated the integration test of Flutter Gallery app.
 2. Under test_driver folder, complete test automation structure and test script are as follows
-   Project_Test_Structure ![Project_Test_Structure](img/Project_Test_Structure.png)
+
+Project_Test_Structure ![Project_Test_Structure](img/Project_Test_Structure.png)
 
    - basttest.dart : this file contains all common pre-requisites to run the test activities like - Flutter driver initialization & connection, setUpAll, teardown, health of          flutter driver, launch of application.
    - isolates_workaround.dart : this file contains the fix for abnormal behaviour of application. Workaround for bug: https://github.com/flutter/flutter/issues/24703
@@ -116,4 +117,4 @@ Currently we can see execution in the console window. Used the print command to 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Video of test execution
 
-![Flutter Gallery_Test_Automation](video/PageObjectModel.gif)
+![Flutter Gallery_Test_Automation](video/Test_Execution.gif)
