@@ -71,8 +71,8 @@ PageObjectModel ![PageObjectModel](img/PageObjectModel.png)
 | 2     | Validate the 'Gallery' heading on home screen                              | Gallery heading on home screen should be visible to user                                                                   | pass          |
 | 3     | Tap on Shrine Card image on home screen                                    | User should be navigated to login screen                                                                                   | pass          |
 | 4     | Validate the 'Next' button on login screen                                 | Next button on login screen should be visible to user                                                                      | pass          |
-| 5     | Enter 'abc' in Username text box                                           | abc' should be entered in the Username text box                                                                            |               |
-| 6     | Enter 'abc' in Password text box                                           | abc' should be entered in the Password text box                                                                            |               |
+| 5     | Enter 'abc' in Username text box                                           | abc' should be entered in the Username text box                                                                            | pass            |
+| 6     | Enter 'abc' in Password text box                                           | abc' should be entered in the Password text box                                                                            | pass               |
 | 7     | Tap on 'Next' button on login screen                                       | User should be navigated to product-list screen                                                                            | pass          |
 | 8     | Validate the 'SHRINE' title text at the top of the screen                  | SHRINE title text at the top of the screen on product-list screen should be visible to user                                | pass          |
 | 9     | Tap on hamburger icon from the top menu bar                                | Menu option screen should be  displayed                                                                                    | pass          |
@@ -111,8 +111,8 @@ Currently we can see execution in the console window. Used the print command to 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Challenges
-1. Appium driver automation will not work as the given applications/ binaries do not have Key values/identifire, which are used to identify the objects on the screen. In this Flutter Gallery application we are blocked on Product screen due to not getting identifiers. Widget is not exposing the proper locators. As result we are blocked to automated the next steps. If elements/locator gets exposed to us then we can also automate this application using Appium.
-2. Appium Flutter Driver is not recognizing Key values by FlutterElement/FlutterFinder using Java and hence as result we are blocked to automated the application scenarios.
+1. Appium driver automation will not work, as the given applications/ binaries do not have Key values/identifier, which are used to identify the objects on the screen. In this Flutter Gallery application Product screen is not showing any identifiers. [Widget is not exposing the proper locators.] As result we are blocked to automate the next steps. If elements/locators are exposed to us then we can also automate this application using Appium.
+2. Appium Flutter Driver is not recognizing Key values by FlutterElement/FlutterFinder using Java and hence we are blocked to automate the application scenarios.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Video of test execution
